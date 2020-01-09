@@ -1,0 +1,19 @@
+{
+    "index_patterns": [
+        "logs-*"
+    ],
+    "mappings": {
+        "properties": {
+            "temperature": {
+                "type": "long"
+            },
+            "timestamp": {
+                "type": "date"
+            }
+        }
+    },
+    "settings" : {
+        "number_of_shards" : "1",
+        "number_of_replicas" : "0"
+    }
+}
