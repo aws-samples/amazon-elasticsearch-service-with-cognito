@@ -12,6 +12,12 @@ The template prefixes the search domain and the Amazon Cognito Hosted UI with a 
 
 ## Get Started
 
+This template is available as an application in the AWS Serverless Application Repository. You can deploy it to your account from there:
+
+[![cloudformation-launch-button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://serverlessrepo.aws.amazon.com/applications/arn:aws:serverlessrepo:us-east-1:387304072572:applications~amazon-elasticsearch-service-with-cognito)
+
+## Deploy from code
+
 You can either deploy the template with AWS CloudFormation or CDK. Both require you to install and configure the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) and the [CDK](https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html).
 
 The CDK template is written in Typescript. Since TypeScript sources need to be compiled initially to JavaScript and every time you make a modification to the `.ts` source files you need to compile them to `.js` files. Open a **new** terminal and keep this terminal open in the background if you like to change the source files. Change the directory to the one where `cdk.json` is and execute:
@@ -92,6 +98,10 @@ stack provides the links for the next steps:
 ![AWS CloudFormation outputs](img/example_dashboard.png)
 
 ## FAQs
+
+### Q: In which region can I deploy the sample application?
+
+The Launch Stack button above opens the AWS Serverless Application Repository in the US East 1 (Northern Virginia) region. You may switch to other regions from there before deployment.
 
 ### Q: How can I add a new question to this list?
 
