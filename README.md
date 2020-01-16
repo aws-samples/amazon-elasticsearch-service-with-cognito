@@ -103,6 +103,16 @@ stack provides the links for the next steps:
 
 The Launch Stack button above opens the AWS Serverless Application Repository in the US East 1 (Northern Virginia) region. You may switch to other regions from there before deployment.
 
+### Q: How much do resources in this template cost?
+
+Standard AWS charges apply to the resources you deploy with this template.
+
+Amazon Elasticsearch Service provides customers in the [AWS Free Tier](https://aws.amazon.com/free/) free usage of up to 750 hours per month of the configuration in this template, i.e. a single-AZ `t2.small.elasticsearch` instance and 10GB of EBS storage for up to one year from the date the account was created. If you exceed the free tier limits, you will be charged the Amazon Elasticsearch Service rates for the additional resources you use.
+
+The Amazon Cognito User Pool feature has a free tier of 50,000 monthly active users for users who sign in directly to Cognito User Pools. The free tier does not automatically expire at the end of your 12 month AWS Free Tier term, and it is available to both existing and new AWS customers indefinitely.
+
+See offer terms of [Amazon Cognito](https://aws.amazon.com/cognito/pricing/) and [Amazon Elasticsearch Service](https://aws.amazon.com/elasticsearch-service/pricing/) for more details.
+
 ### Q: How can I add a new question to this list?
 
 If you found yourself wishing this set of frequently asked questions had an answer for a particular problem, please [submit a pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/). The chances are good that others will also benefit from having the answer listed here.
