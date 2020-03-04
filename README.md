@@ -6,6 +6,12 @@ An Infrastructure-as-Code approach allows you to complete deployment and configu
 
 This is the sample code for the concepts described in the blog post [Launch Amazon Elasticsearch Service with Amazon Cognito User Pools](https://aws.amazon.com/blogs/field-notes/launch-amazon-elasticsearch-service-with-amazon-cognito-user-pools/). It contains a [AWS Cloud Development Kit](https://aws.amazon.com/cdk/) (AWS CDK) template for the fully automated provisioning of the Amazon ES and Amazon Cognito resources, as well as your first search index and Kibana dashboard. The template structure is also applicable if you prefer to use AWS CloudFormation.
 
+## Get Started
+
+Deploy the sample template from the AWS Serverless Application Repository:
+
+[![cloudformation-launch-button](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://serverlessrepo.aws.amazon.com/applications/arn:aws:serverlessrepo:us-east-1:387304072572:applications~amazon-elasticsearch-service-with-cognito)
+
 ## Deploy the template from code
 
 The template provisions an Amazon Elasticsearch Service cluster in a fully automated way. The search cluster consists of a single `t2.small.elasticsearch` instance with 10GB of EBS storage. It is integrated with Amazon Cognito User Pools so you only need to add your user(s). The template also configures an example Kibana dashboard and an Amazon ES index template.
