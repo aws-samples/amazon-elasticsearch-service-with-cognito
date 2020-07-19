@@ -3,7 +3,7 @@
 
 import { Fn, Stack, Construct, StackProps, CfnParameter, CfnOutput } from '@aws-cdk/core';
 import { CfnDomain } from '@aws-cdk/aws-elasticsearch';
-import { UserPoolAttribute, CfnUserPoolDomain, CfnIdentityPool, CfnIdentityPoolRoleAttachment, CfnUserPool } from '@aws-cdk/aws-cognito';
+import { CfnUserPoolDomain, CfnIdentityPool, CfnIdentityPoolRoleAttachment, CfnUserPool } from '@aws-cdk/aws-cognito';
 import { Role, ManagedPolicy, ServicePrincipal, FederatedPrincipal } from '@aws-cdk/aws-iam';
 import { CustomResource } from '@aws-cdk/aws-cloudformation';
 
@@ -32,7 +32,7 @@ export class SearchStack extends Stack {
       },
       policies: { passwordPolicy: { minimumLength: 8 } },
       usernameAttributes: ["email"],
-      autoVerifiedAttributes: [UserPoolAttribute.EMAIL],
+      autoVerifiedAttributes: ["email"],
     });
 
     // get a unique suffix from the last element of the stackId, e.g. 06b321d6b6e2

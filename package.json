@@ -11,9 +11,9 @@
   },
   "devDependencies": {
     "@types/node": "10.17.5",
-    "aws-cdk": "^1.18.0",
-    "ts-node": "^8.1.0",
-    "typescript": "~3.7.2"
+    "aws-cdk": "^1.52.0",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
   },
   "dependencies": {
     "@aws-cdk/aws-cloudformation": "^1.18.0",

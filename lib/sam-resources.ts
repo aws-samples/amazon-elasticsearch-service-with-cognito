@@ -4,7 +4,7 @@
 import { Fn, Construct, Token } from '@aws-cdk/core';
 import { ICustomResourceProvider, CustomResourceProviderConfig } from '@aws-cdk/aws-cloudformation';
 import { CfnFunction } from '@aws-cdk/aws-sam';
-import YAML = require('yaml');
+const YAML = require('yaml')
 
 export class SamFunction extends CfnFunction {
 
