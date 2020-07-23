@@ -63,7 +63,7 @@ export class SearchStack extends Stack {
     const esDomain = new CfnDomain(this, "searchDomain", {
       elasticsearchClusterConfig: { instanceType: "t2.small.elasticsearch" },
       ebsOptions: { volumeSize: 10, ebsEnabled: true },
-      elasticsearchVersion: "7.4",
+      elasticsearchVersion: "7.7",
       domainName: applicationPrefix,
 
       // Trust the cognito authenticated Role
