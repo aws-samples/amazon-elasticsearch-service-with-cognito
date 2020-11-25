@@ -14,7 +14,7 @@ Deploy the sample template from the AWS Serverless Application Repository:
 
 ## Deploy the template from code
 
-The template provisions an Amazon Elasticsearch Service cluster in a fully automated way. The search cluster consists of a single `t2.small.elasticsearch` instance with 10GB of EBS storage. It is integrated with Amazon Cognito User Pools so you only need to add your user(s). The template also configures an example Kibana dashboard and an Amazon ES index template.
+The template provisions an Amazon Elasticsearch Service cluster in a fully automated way. The search cluster consists of a single `t3.small.elasticsearch` instance with 10GB of EBS storage. It is integrated with Amazon Cognito User Pools so you only need to add your user(s). The template also configures an example Kibana dashboard and an Amazon ES index template.
 
 The template prefixes the search domain and the Amazon Cognito Hosted UI with a string that you can define with the `applicationPrefix` template parameter.
 
@@ -28,55 +28,12 @@ npm run watch
 ```
 
 Read the [CDK developer guide](https://docs.aws.amazon.com/cdk/latest/guide/home.html) for more information.
+### Deployment using CDK
 
-### Option 1: Deployment using AWS CloudFormation
-
-Synthesize the CDK template to an AWS CloudFormation template:
-
-```bash
-cdk synth --version-reporting false > synth.yaml
-```
-
-Package the template for deployment. AWS CloudFormation [transforms](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-deploying.html) the AWS Serverless Application Model (AWS SAM) syntax to AWS CloudFormation code and uploads the package to a bucket of your choice. The bucket must be in the region in which you want to deploy the sample application:
+Create or update the application with `cdk deploy`.
 
 ```bash
-aws cloudformation package \
-    --template-file synth.yaml \
-    --output-template-file packaged.yaml \
-    --s3-bucket <BUCKET> \
-    --region <REGION>
-```
-
-Deploy the packaged application to your account:
-
-```bash
-aws cloudformation deploy
-    --template-file packaged.yaml \
-    --stack-name <STACKNAME> \
-    --parameter-overrides applicationPrefix=<PREFIX> \
-    --capabilities CAPABILITY_IAM \
-    --region <REGION>
-```
-
-### Option 2: Deployment using CDK
-
-CDK needs the AWS Lambda function code already packaged in S3. Run the synthesize and package steps to package the code:
-
-```bash
-cdk synth > synth.yaml
-aws cloudformation package \
-    --template-file synth.yaml \
-    --output-template-file packaged.yaml \
-    --s3-bucket <BUCKET> \
-    --region <REGION>
-```
-
-Create or update the application with `cdk deploy`. This CDK template can retrieve the S3 URL to your AWS Lambda function code package from the previously packaged template – provided in the `SAM_PACKAGED_TEMPLATE` environment variable:
-
-```bash
-SAM_PACKAGED_TEMPLATE=$(cat packaged.yaml) \
-    AWS_DEFAULT_REGION=<REGION> \
-    cdk deploy -c applicationPrefix=<PREFIX>
+cdk deploy -c applicationPrefix=<PREFIX>
 ```
 
 ### Access the Example Dashboard
@@ -87,15 +44,35 @@ As soon as the application is deployed completely the outputs of the AWS CloudFo
 
 * Use the `createUserUrl` link from the outputs, or navigate to the Amazon Cognito user pool in the console to create a new user in the pool. **Enter an email address as username and email**. **Enter a temporary password** of your choice with at least 8 characters. Leave the phone number empty and **uncheck the checkbox to mark the phone number as verified**. If you like you can check the checkboxes to send an invitation to the new user or to make the user verify the email address. Then choose **Create user**.
 
-    ![AWS CloudFormation outputs](img/create_user.png)
+    ![Create the user in the Amazon Cognito user pool](img/create_user.png)
 
-* Access the Kibana dashboard with the `kibanaUrl` link from the outputs, or navigate to the Kibana link displayed in the Amazon Elasticsearch Service console. In Kibana, choose the Dashboard icon in the left menu bar and open the *Example Dashboard*. The dashboard contains instructions to add new documents to the search index and to visualize the documents with the graph in the dashboard.
+* The user has access restricted to the `logs-tenant`. If you want to provide full access control, including security management permissions, add the user to the `es-admins` group:
 
-    ![AWS CloudFormation outputs](img/example_dashboard.png)
+    ![Add the user to the es-admins group](img/user_admin_group.png)
+
+* Access the Kibana dashboard with the `kibanaUrl` link from the outputs, or navigate to the Kibana link displayed in the Amazon Elasticsearch Service console.
+
+* In Kibana, go to the tenant selection by choosing the **user menu** on the top right. Choose **Switch tenants**:
+
+    ![User menu](img/switch_tenants_1.png)
+
+* Choose the `logs-tenant` that has been created during the launch of the application. Choose **Confirm**.
+
+    ![User menu](img/switch_tenants_2.png)
+
+* Choose the **navigation menu** on top left and choose **Dashbaord**. Choose the **Example Dashboard**. The dashboard contains instructions to add new documents to the search index and to visualize the documents with the graph in the dashboard.
+
+    ![Screenshot of the example dashboard](img/example_dashboard.png)
 
 ## Cleaning Up
 
-To avoid incurring charges, delete the AWS CloudFormation stack when you are finished experimenting:
+To avoid incurring charges, delete the AWS CloudFormation stack when you are finished experimenting via `cdk destroy` in the directory where `cdk.json` is:
+
+```bash
+cdk destroy
+```
+
+Or delete the AWS CloudFormation stack manually:
 
 * Sign in to the AWS CloudFormation console and choose your stack.
 * Choose **Delete** to delete all resources, including the search cluster and the Amazon Cognito user pool.
@@ -110,12 +87,11 @@ The Launch Stack button above opens the AWS Serverless Application Repository in
 
 Standard AWS charges apply to the resources you deploy with this template.
 
-Amazon Elasticsearch Service provides customers in the [AWS Free Tier](https://aws.amazon.com/free/) free usage of up to 750 hours per month of the configuration in this template, i.e. a single-AZ `t2.small.elasticsearch` instance and 10GB of EBS storage for up to one year from the date the account was created. If you exceed the free tier limits, you will be charged the Amazon Elasticsearch Service rates for the additional resources you use.
+Amazon Elasticsearch Service provides customers in the [AWS Free Tier](https://aws.amazon.com/free/) free usage of up to 750 hours per month of the configuration in this template, i.e. a single-AZ `t3.small.elasticsearch` instance and 10GB of EBS storage for up to one year from the date the account was created. If you exceed the free tier limits, you will be charged the Amazon Elasticsearch Service rates for the additional resources you use.
 
 The Amazon Cognito User Pool feature has a free tier of 50,000 monthly active users for users who sign in directly to Cognito User Pools. The free tier does not automatically expire at the end of your 12 month AWS Free Tier term, and it is available to both existing and new AWS customers indefinitely.
 
 See offer terms of [Amazon Cognito](https://aws.amazon.com/cognito/pricing/) and [Amazon Elasticsearch Service](https://aws.amazon.com/elasticsearch-service/pricing/) for more details.
-
 ### Q: How can I add a new question to this list?
 
 If you found yourself wishing this set of frequently asked questions had an answer for a particular problem, please [submit a pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/). The chances are good that others will also benefit from having the answer listed here.

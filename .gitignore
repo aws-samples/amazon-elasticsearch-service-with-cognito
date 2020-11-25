@@ -1,5 +1,5 @@
 *.js
-!functions/*
+!functions/**
 !jest.config.js
 *.d.ts
 node_modules
@@ -12,3 +12,5 @@ cdk.out
 packaged.yaml
 synth.yaml
 .DS_Store
+.aws-sam
+samconfig.toml
