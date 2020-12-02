@@ -146,6 +146,7 @@ export class SearchStack extends Stack {
         physicalResourceId: PhysicalResourceId.of(`ClientId-${applicationPrefix}`)
       }
     });
+    userPoolClients.node.addDependency(esDomain);
 
     const clientId = userPoolClients.getResponseField('UserPoolClients.0.ClientId');
     const providerName = `cognito-idp.${this.region}.amazonaws.com/${userPool.ref}:${clientId}`
