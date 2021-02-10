@@ -60,7 +60,7 @@ As soon as the application is deployed completely the outputs of the AWS CloudFo
 
     ![User menu](img/switch_tenants_2.png)
 
-* Choose the **navigation menu** on top left and choose **Dashbaord**. Choose the **Example Dashboard**. The dashboard contains instructions to add new documents to the search index and to visualize the documents with the graph in the dashboard.
+* Choose the **navigation menu** on top left and choose **Dashboard**. Choose the **Example Dashboard**. The dashboard contains instructions to add new documents to the search index and to visualize the documents with the graph in the dashboard.
 
     ![Screenshot of the example dashboard](img/example_dashboard.png)
 
