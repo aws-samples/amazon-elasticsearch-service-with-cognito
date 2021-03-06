@@ -10,19 +10,19 @@
     "cdk": "cdk"
   },
   "devDependencies": {
-    "@types/node": "10.17.5",
-    "aws-cdk": "^1.73.0",
-    "ts-node": "^8.10.2",
-    "typescript": "^3.9.7"
+    "@types/node": "10.17.27",
+    "aws-cdk": "^1.92.0",
+    "ts-node": "^9.0.0",
+    "typescript": "~3.9.7"
   },
   "dependencies": {
-    "@aws-cdk/aws-cloudformation": "^1.73.0",
-    "@aws-cdk/aws-cognito": "^1.73.0",
-    "@aws-cdk/aws-elasticsearch": "^1.73.0",
-    "@aws-cdk/aws-sam": "^1.73.0",
-    "@aws-cdk/core": "^1.73.0",
+    "@aws-cdk/aws-cloudformation": "^1.92.0",
+    "@aws-cdk/aws-cognito": "^1.92.0",
+    "@aws-cdk/aws-elasticsearch": "^1.92.0",
+    "@aws-cdk/aws-sam": "^1.92.0",
+    "@aws-cdk/core": "^1.92.0",
     "@types/yaml": "^1.2.0",
-    "aws-sdk": "^2.793.0",
+    "aws-sdk": "^2.858.0",
     "source-map-support": "^0.5.16"
   }
 }
