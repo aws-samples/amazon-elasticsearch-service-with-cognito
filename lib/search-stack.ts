@@ -172,7 +172,7 @@ export class SearchStack extends Stack {
      * for the custom resource.
      */
     const esRequestsFn = new lambda.Function(this, 'esRequestsFn', {
-      runtime: lambda.Runtime.NODEJS_10_X,
+      runtime: lambda.Runtime.NODEJS_14_X,
       handler: 'es-requests.handler',
       code: lambda.Code.fromAsset(path.join(__dirname, '..', 'functions/es-requests')),
       timeout: Duration.seconds(30),
