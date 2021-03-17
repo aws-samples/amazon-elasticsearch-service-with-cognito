@@ -29,7 +29,6 @@ export class SearchStack extends Stack {
       adminCreateUserConfig: {
         allowAdminCreateUserOnly: true
       },
-      policies: { passwordPolicy: { minimumLength: 8 } },
       usernameAttributes: ["email"],
       autoVerifiedAttributes: ["email"],
     });
