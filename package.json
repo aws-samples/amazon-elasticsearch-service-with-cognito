@@ -1,5 +1,5 @@
 {
-  "name": "monitor-java-gc-on-aws-lambda",
+  "name": "amazon-elasticsearch-service-with-cognito",
   "version": "1.1.4",
   "description": "Launch Amazon Elasticsearch Service with Amazon Cognito User Pools and Fine-Grained Access Control.",
   "author": {
